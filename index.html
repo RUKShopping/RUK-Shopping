@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="hi">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#173d32"><meta name="description" content="RUK Shopping - online product discovery">
+<link rel="manifest" href="manifest.webmanifest"><link rel="stylesheet" href="style.css">
+<title>RUK Shopping</title>
+</head>
+<body>
+<header class="top"><a class="brand" href="#"><span class="bag">R</span><span id="storeName">RUK Shopping<small>Find useful products</small></span></a><button id="installBtn" class="ghost" hidden>Install App</button><button id="adminToggle" class="ghost">Admin</button></header>
+<section class="hero"><p class="eyebrow">WELCOME TO RUK SHOPPING</p><h1>Discover products<br>you’ll love.</h1><p>Browse products and visit the seller through our affiliate links.</p><input id="search" type="search" placeholder="प्रोडक्ट खोजें..."></section>
+<main><div class="section-head"><div><p class="eyebrow">OUR COLLECTION</p><h2>Popular Products</h2></div><span id="productCount" class="muted"></span></div><div id="products" class="products"><p class="muted">Loading products…</p></div></main>
+<footer>© <span id="year"></span> RUK Shopping · Product sales and delivery are handled by the linked seller.</footer>
+<dialog id="adminDialog"><div class="dialog-head"><h2>Store Admin</h2><button class="x" id="closeAdmin">×</button></div>
+<div id="authBox"><p class="muted">अपने स्टोर को मैनेज करने के लिए Admin account से लॉगिन करें।</p><label>Email<input id="email" type="email" placeholder="you@example.com"></label><label>Password<input id="password" type="password" placeholder="Password"></label><div class="actions"><button id="loginBtn">Login</button><button id="signupBtn" class="secondary">Create account</button></div><p id="authMsg" class="notice"></p></div>
+<div id="adminBox" hidden><div class="admin-top"><span id="who"></span><button id="logoutBtn" class="secondary">Logout</button></div>
+<div class="stats"><div><b id="statProducts">0</b><small>Products</small></div><div><b id="statClicks">0</b><small>Tracked clicks</small></div><div><b id="statOrders">0</b><small>Manually recorded orders</small></div></div>
+<h3 id="formTitle">Add product</h3><form id="productForm"><input id="editId" type="hidden"><label>Product name<input id="pName" required maxlength="90" placeholder="Example: Wireless headphones"></label><label>Price (₹)<input id="pPrice" type="number" min="0" step="0.01" required></label><label>Image URL (https://...)<input id="pImage" type="url" placeholder="Optional"></label><label>Affiliate / seller link<input id="pLink" type="url" required placeholder="https://..."></label><label>Short description<textarea id="pDesc" rows="2" maxlength="240"></textarea></label><label class="check"><input id="pActive" type="checkbox" checked> Show on public website</label><button type="submit">Save product</button><button type="button" id="cancelEdit" class="secondary" hidden>Cancel edit</button><p id="productMsg" class="notice"></p></form>
+<h3>Your products</h3><div id="adminProducts"></div>
+<h3>Order notes</h3><p class="muted small">Affiliate orders are not automatically imported. Enter only summary information from your affiliate dashboard; never store customer passwords, OTPs, full card details or sensitive personal data here.</p><form id="orderForm"><label>Product<select id="orderProduct" required></select></label><label>Order value (₹)<input id="orderValue" type="number" min="0" step="0.01" required></label><label>Commission shown by affiliate network (₹)<input id="orderCommission" type="number" min="0" step="0.01" value="0"></label><label>Status<select id="orderStatus"><option>Pending</option><option>Approved</option><option>Cancelled</option></select></label><button>Record order</button><p id="orderMsg" class="notice"></p></form><div id="ordersList"></div>
+</div></dialog>
+<div id="toast" role="status"></div>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script><script src="config.js"></script><script src="app.js"></script>
+</body></html>
